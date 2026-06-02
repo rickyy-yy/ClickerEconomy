@@ -1,0 +1,31 @@
+name: ClickerEconomy
+version: 1.0.0
+main: com.clickereconomy.ClickerPlugin
+api-version: "1.16"
+softdepend: [Vault, PlaceholderAPI]
+
+commands:
+  clicker:
+    description: Open the clicker GUI or run subcommands
+    usage: /<command> [help|stats|multiplier|placeholders|reload]
+    permission: clicker.use
+
+permissions:
+  clicker.use:
+    description: Open the clicker GUI with /clicker
+    default: true
+  clicker.help:
+    description: View /clicker help
+    default: true
+  clicker.stats:
+    description: View personal click stats with /clicker stats
+    default: true
+  clicker.admin:
+    description: Use /clicker reload and /clicker multiplier set
+    default: op
+  clicker.placeholders:
+    description: View the placeholder list with /clicker placeholders
+    default: op
+  clicker.multiplier.*:
+    description: Wildcard — grants no automatic multiplier; assign numeric nodes instead
+    default: false

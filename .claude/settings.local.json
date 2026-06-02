@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(New-Item -ItemType Directory -Force \"C:\\\\Users\\\\ASUS\\\\Downloads\\\\Clicker\\\\src\\\\main\\\\java\\\\com\\\\clickereconomy\")",
+      "Bash(Out-Null)",
+      "Bash(New-Item -ItemType Directory -Force \"C:\\\\Users\\\\ASUS\\\\Downloads\\\\Clicker\\\\src\\\\main\\\\resources\")",
+      "Bash(Write-Host \"Directories created\")",
+      "PowerShell(Get-ChildItem -Recurse \"C:\\\\Users\\\\ASUS\\\\Downloads\\\\Clicker\" | Where-Object { !$_.PSIsContainer } | Select-Object -ExpandProperty FullName)",
+      "Bash(mvn package *)",
+      "PowerShell(mvn package -f \"C:\\\\Users\\\\ASUS\\\\Downloads\\\\Clicker\\\\pom.xml\")"
+    ]
+  }
+}

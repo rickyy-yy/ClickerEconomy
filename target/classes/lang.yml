@@ -1,0 +1,207 @@
+# lang.yml — ClickerEconomy language file
+# Supports & colour codes and &#RRGGBB hex on Minecraft 1.16+ servers.
+# Set any message to "" (empty string) to disable it entirely.
+#
+# Internal %clicker_<name>% tokens AND any PlaceholderAPI placeholder
+# (e.g. %player_name%) can be used in GUI lore, item names, and messages.
+
+# Prefix prepended to all player-facing chat messages (not GUI item text).
+# Set to "" to disable.
+prefix: "&8[&aClicker&8]&r "
+
+# Internal version — do not edit (managed automatically)
+lang-version: 6
+
+# =============================================================================
+# GUI item display text
+# =============================================================================
+
+gui:
+  title: "&8Clicker"
+
+  clicker-item:
+    name: "&a&lClick Me!"
+
+    # Animated name — cycles through these entries on each click.
+    # Overrides 'name' when this list is non-empty. Supports &#RRGGBB hex.
+    # animation:
+    #   - "&#ff0000&lClick Me!"
+    #   - "&#ff7700&lClick Me!"
+    #   - "&#ffff00&lClick Me!"
+    #   - "&#00ff00&lClick Me!"
+    #   - "&#0000ff&lClick Me!"
+    #   - "&#8b00ff&lClick Me!"
+    animation: []
+
+    # Placeholders: %clicker_amount% %clicker_min_amount% %clicker_max_amount%
+    #   %clicker_balance% %clicker_clicks% %clicker_rank%
+    #   %clicker_multiplier% %clicker_personal_multiplier% %clicker_global_multiplier%
+    lore:
+      - "&7Click to earn &a$%clicker_amount%"
+      - "&7Total clicks: &a%clicker_clicks%"
+      - "&7Multiplier: &a%clicker_multiplier%x"
+
+  balance-display:
+    name: "&6Your Balance"
+    lore:
+      - "&e$%clicker_balance%"
+
+  filler:
+    name: " "
+
+# =============================================================================
+# Reward messages
+# Placeholders: %clicker_amount% %clicker_min_amount% %clicker_max_amount%
+#   %clicker_balance% %clicker_clicks% %clicker_rank%
+#   %clicker_multiplier% %clicker_personal_multiplier% %clicker_global_multiplier%
+# =============================================================================
+
+reward:
+  earned: "&aYou earned &2$%clicker_amount%&a!"
+  jackpot: "&6&lJACKPOT! &eYou earned &6$%clicker_amount%&e!"
+  deposit-failed: "&cFailed to deposit currency. Contact an administrator."
+
+# =============================================================================
+# Cooldown  (%clicker_seconds% = seconds remaining)
+# =============================================================================
+
+cooldown:
+  message: "&cPlease wait &e%clicker_seconds%s &cbefore clicking again."
+
+# =============================================================================
+# Global multiplier events  (%clicker_multiplier% = the value that expired)
+# Set to "" to disable the broadcast entirely.
+# =============================================================================
+
+multiplier-events:
+  expired: "&eThe &6%clicker_multiplier%x &eglobal reward multiplier has expired."
+
+# =============================================================================
+# General command errors / feedback
+# =============================================================================
+
+general:
+  no-permission: "&cYou don't have permission to do that."
+  players-only-gui: "&cOnly players can open the clicker GUI. Use &e/clicker help &cfor available commands."
+  players-only: "&cOnly players can use this command."
+  vault-unavailable: "&cEconomy is not available. Contact an administrator."
+  unknown-subcommand: "&cUnknown subcommand. Use &e/clicker help &cfor a list of commands."
+  config-reloaded: "&aClickerEconomy config reloaded."
+
+# =============================================================================
+# /clicker help
+# =============================================================================
+
+help:
+  header: "&8--- &aClickerEconomy Help &8---"
+  entry-open:             "&e/clicker &7— Open the clicker GUI &8[clicker.use]"
+  entry-top:              "&e/clicker top [page] &7— View the click leaderboard &8[clicker.use]"
+  entry-help:             "&e/clicker help &7— Show this help message &8[clicker.help]"
+  entry-stats:            "&e/clicker stats &7— View your personal stats &8[clicker.stats]"
+  entry-multiplier-get:   "&e/clicker multiplier [get] &7— Show active multipliers &8[clicker.use]"
+  entry-multiplier-set:   "&e/clicker multiplier set <n> [duration] &7— Set global multiplier &8[clicker.admin]"
+  entry-multiplier-reset: "&e/clicker multiplier reset &7— Reset global multiplier &8[clicker.admin]"
+  entry-clicks-give:      "&e/clicker clicks give <player> <n> &7— Add clicks to a player &8[clicker.admin]"
+  entry-clicks-set:       "&e/clicker clicks set <player> <n> &7— Set a player's click count &8[clicker.admin]"
+  entry-clicks-reset:     "&e/clicker clicks reset <player> &7— Reset a player's clicks to 0 &8[clicker.admin]"
+  entry-reload:           "&e/clicker reload &7— Reload config.yml &8[clicker.admin]"
+  entry-placeholders:     "&e/clicker placeholders &7— List all lang.yml placeholder tokens &8[clicker.placeholders]"
+
+# =============================================================================
+# /clicker clicks give|set|reset  (admin only)
+# Placeholders: %clicker_player%  %clicker_amount%  %clicker_clicks%  %clicker_input%
+# =============================================================================
+
+clicks-cmd:
+  usage:           "&cUsage: /clicker clicks <give|set|reset> <player> [amount]"
+  give-success:    "&aGave &e%clicker_amount% clicks &ato &e%clicker_player%&a. They now have &e%clicker_clicks% clicks&a."
+  set-success:     "&aSet &e%clicker_player%&a's clicks to &e%clicker_clicks%&a."
+  reset-success:   "&aReset &e%clicker_player%&a's clicks to 0."
+  player-not-found: "&cNo data found for player &e%clicker_player%&c."
+  invalid-number:  "&c'%clicker_input%' is not a valid number."
+  invalid-amount:  "&cAmount must be greater than 0."
+
+# =============================================================================
+# /clicker top [page]
+# Placeholders: %clicker_page%  %clicker_max_page%  %clicker_rank%
+#               %clicker_player%  %clicker_clicks%
+# =============================================================================
+
+top:
+  header:       "&8--- &aTop Clickers &8(Page &e%clicker_page%&8/&e%clicker_max_page%&8) ---"
+  entry:        "  &8#&7%clicker_rank%  &a%clicker_player% &8— &7%clicker_clicks% clicks"
+  empty:        "  &7No click data available yet."
+  invalid-page: "&cInvalid page number."
+  footer:       "&7Page &e%clicker_page%&7/&e%clicker_max_page% &8| &7/clicker top <page>"
+
+# =============================================================================
+# /clicker stats
+# Placeholders: %clicker_clicks% %clicker_rank% %clicker_balance%
+#               %clicker_effective% %clicker_personal% %clicker_global%
+# =============================================================================
+
+stats:
+  header:     "&8--- &6Your Clicker Stats &8---"
+  clicks:     "&eClicks:      &f%clicker_clicks% &8(rank #%clicker_rank%)"
+  balance:    "&eBalance:     &f$%clicker_balance%"
+  multiplier: "&eMultiplier:  &f%clicker_effective%x &8(personal %clicker_personal%x × global %clicker_global%x)"
+
+# =============================================================================
+# /clicker multiplier
+# =============================================================================
+
+multiplier-cmd:
+  # %clicker_value%    = current global multiplier
+  # %clicker_time_tag% = resolved from time-permanent or time-expires below
+  get-global:    "&eGlobal multiplier: &6%clicker_value%x &8%clicker_time_tag%"
+  get-personal:  "&eYour personal multiplier: &6%clicker_value%x"
+  get-effective: "&eYour effective multiplier: &6%clicker_value%x"
+
+  # %clicker_value%        = new multiplier
+  # %clicker_duration_tag% = resolved from duration-permanent or duration-timed below
+  set-success:   "&aGlobal multiplier set to &e%clicker_value%x &a%clicker_duration_tag%."
+
+  # %clicker_value% = reset-to value
+  reset-success: "&aGlobal multiplier reset to &e%clicker_value%x &a(permanent)."
+
+  # Errors
+  invalid-number:   "&c'%clicker_input%' is not a valid number."
+  value-too-low:    "&cMultiplier must be greater than 0."
+  invalid-duration: "&cInvalid duration '&e%clicker_input%&c'. Examples: &e30s  5m  2h  1d"
+  usage:     "&cUsage: /clicker multiplier [get | set <value> [duration] | reset]"
+  usage-set: "&cUsage: /clicker multiplier set <value> [duration]"
+  set-hint:  "&7Duration examples: &e30s  5m  2h  1d &7(omit for permanent)"
+
+  # Inline tags — composed into the messages above
+  # %clicker_time% = formatted duration, e.g. "1h 30m"
+  time-permanent: "(permanent)"
+  time-expires:   "(expires in %clicker_time%)"
+  duration-permanent: "permanently"
+  duration-timed:     "for %clicker_time%"
+
+# =============================================================================
+# /clicker placeholders — lists all usable %clicker_*% tokens
+# =============================================================================
+
+placeholders:
+  header: "&8--- &aClickerEconomy Placeholders &8---"
+  note:   "&7Use these tokens in &elang.yml&7 item names, lore, and messages."
+  entries:
+    - "&e%clicker_amount%               &8» &7reward per click"
+    - "&e%clicker_min_amount%           &8» &7minimum reward (random mode)"
+    - "&e%clicker_max_amount%           &8» &7maximum reward (random mode)"
+    - "&e%clicker_clicks%               &8» &7your total lifetime clicks"
+    - "&e%clicker_rank%                 &8» &7your rank by click count"
+    - "&e%clicker_balance%              &8» &7your current Vault balance"
+    - "&e%clicker_multiplier%           &8» &7your effective multiplier"
+    - "&e%clicker_personal_multiplier%  &8» &7your personal (permission) multiplier"
+    - "&e%clicker_global_multiplier%    &8» &7the server-wide global multiplier"
+    - "&e%clicker_seconds%              &8» &7cooldown seconds remaining"
+    - "&e%clicker_effective%            &8» &7effective multiplier (stats)"
+    - "&e%clicker_personal%             &8» &7personal multiplier (stats)"
+    - "&e%clicker_global%               &8» &7global multiplier (stats)"
+    - "&e%clicker_value%                &8» &7generic value (multiplier cmd)"
+    - "&e%clicker_time%                 &8» &7formatted duration (e.g. 1h 30m)"
+    - "&e%clicker_input%                &8» &7user input (error messages)"
+    - "&e%clicker_jackpot_min_amount%  &8» &7minimum jackpot reward (N/A if disabled)"
+    - "&e%clicker_jackpot_max_amount%  &8» &7maximum jackpot reward (N/A if disabled)"

@@ -1,0 +1,113 @@
+# config.yml — ClickerEconomy behaviour settings
+# All player-facing text (messages, item names, lore, GUI title) lives in lang.yml.
+#
+# Internal version — do not edit (managed automatically by the plugin)
+config-version: 10
+
+# ── Storage ───────────────────────────────────────────────────────────────────
+# backend: yaml | h2 | mysql | mariadb | postgresql
+#   yaml        — flat YAML file (default, no extra setup)
+#   h2          — embedded H2 file database (no server needed)
+#   mysql       — external MySQL 5.7+ / 8.x
+#   mariadb     — external MariaDB (requires mariadb-java-client on classpath)
+#   postgresql  — external PostgreSQL (requires postgresql driver on classpath)
+
+storage:
+  backend: yaml
+
+  # Used by mysql / mariadb / postgresql
+  sql:
+    host: localhost
+    port: 3306
+    database: minecraft
+    username: root
+    password: ""
+    use-ssl: false
+    pool-size: 5
+    connection-timeout: 30000
+    idle-timeout: 600000
+    max-lifetime: 1800000
+
+  # Prefix for all table names — change if sharing a database with another plugin
+  table-prefix: "ce_"
+
+  # H2 only: database file name relative to the plugin folder (no extension)
+  h2-file: h2data
+
+# ── Leaderboard ───────────────────────────────────────────────────────────────
+
+leaderboard:
+  entries-per-page: 10
+
+# ── Economy ───────────────────────────────────────────────────────────────────
+
+# Base amount deposited per click (ignored when random-reward is enabled)
+reward-amount: 1.0
+
+# Base global multiplier — used as the default when no timed override is active
+# and as the value the multiplier reverts to when a timed one expires.
+# The active runtime value is managed via /clicker multiplier set and lives in data.yml.
+global-multiplier: 1.0
+
+# Per-player multipliers are granted via permissions:
+#   clicker.multiplier.2    →  2x
+#   clicker.multiplier.1.5  →  1.5x
+# The highest matching permission wins and stacks with the global multiplier.
+
+# ── Random rewards ────────────────────────────────────────────────────────────
+
+random-reward:
+  enabled: false
+  min: 0.5
+  max: 5.0
+  jackpot:
+    enabled: false
+    chance: 0.01          # probability per click (0.01 = 1 %)
+    min: 50.0
+    max: 100.0
+    sound: UI_TOAST_CHALLENGE_COMPLETE
+
+# ── Cooldown ──────────────────────────────────────────────────────────────────
+
+# Minimum seconds between rewarded clicks (0 = disabled)
+click-cooldown: 0
+
+# If true the cooldown message (lang.yml → cooldown.message) is suppressed
+silent-cooldown: false
+
+# ── Clicker item ──────────────────────────────────────────────────────────────
+
+clicker-item:
+  material: DIAMOND
+  slot: 13            # GUI slot for the clicker item [0-26]
+  # To use a custom player head set material to PLAYER_HEAD and uncomment:
+  # skull-texture: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90..."
+
+# ── Balance display pane ──────────────────────────────────────────────────────
+
+balance-display:
+  slot: 4             # Set to -1 to disable
+  material: GOLD_INGOT
+
+# ── Filler pane ───────────────────────────────────────────────────────────────
+
+filler:
+  material: GRAY_STAINED_GLASS_PANE
+
+# ── Reward sound ──────────────────────────────────────────────────────────────
+
+reward-sound:
+  enabled: true
+  # Any value from the Bukkit Sound enum for your server version
+  sound: ENTITY_PLAYER_LEVELUP
+  volume: 1.0
+  pitch: 1.0
+
+# ── GUI open sound ────────────────────────────────────────────────────────────
+
+gui-open-sound:
+  enabled: true
+  # Any value from the Bukkit Sound enum for your server version
+  sound: BLOCK_CHEST_OPEN
+  volume: 1.0
+  pitch: 1.2

@@ -1,0 +1,15 @@
+com\clickereconomy\storage\SqlClickerStorage.class
+com\clickereconomy\LangManager.class
+com\clickereconomy\ClickerListener.class
+com\clickereconomy\ClickerPlugin$2.class
+com\clickereconomy\storage\ClickerStorage.class
+com\clickereconomy\ClickerPlaceholders.class
+com\clickereconomy\ClickerPlugin$1.class
+com\clickereconomy\storage\YamlClickerStorage.class
+com\clickereconomy\ColorUtil.class
+com\clickereconomy\ClickerCommand.class
+com\clickereconomy\ClickerListener$1.class
+com\clickereconomy\storage\ClickerStorage$MultiplierRecord.class
+com\clickereconomy\ClickerPlugin.class
+com\clickereconomy\ClickerPlugin$3.class
+com\clickereconomy\ClickerGUI.class
